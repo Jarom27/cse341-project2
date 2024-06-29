@@ -1,0 +1,35 @@
+
+POST http://localhost:3001/people/
+{ 
+    "_id": { "$oid": "6680610916b9d55e6fdd6440" },
+    "firstname": "Jarom",
+    "lastname" : "Mariscal",
+    "member": true,
+    "ward" : "Esperanza",
+    "stake" : "Obregon, Mexico"
+}
+###
+POST http://localhost:3001/people/
+{ 
+    "_id": { "$oid": "6680610916b9d55e6fdd6440" },
+    "firstname": "Osmar",
+    "lastname" : "Sanchez",
+    "member" : false
+}
+###
+POST http://localhost:3001/activities/
+{
+    "_id": {},
+    "title": "Me Confundí de lugar",
+    "description": "A dance activity",
+    "date": "5/15/24",
+    "place": "Pioneros Ward",
+    "host": "Mckanney family",
+    "organizators": [
+        {"person_id": {"$oid": "6680610916b9d55e6fdd6440" }}
+    ],
+    "attendance":[
+        {"person_id" : { "$oid": "6680610916b9d55e6fdd6440" }} 
+    ],  
+}
+
