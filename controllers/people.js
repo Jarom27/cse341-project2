@@ -22,12 +22,12 @@ const getPerson = async function (req, res) {
 const addPerson = async function (req, res) {
     //#swagger.tags = ['People']
     const isMember = req.body.isMember
-    const person = {}
+    let person = {}
     if (isMember) {
         person = {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            member: isMember,
+            isMember: isMember,
             ward: req.body.ward,
             stake: req.body.stake,
         }
@@ -36,7 +36,7 @@ const addPerson = async function (req, res) {
         person = {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            member: isMember,
+            isMember: isMember,
         }
     }
     const personResult = await mongo.getDatabase().db().collection('people').insertOne(person)
@@ -51,13 +51,13 @@ const updatePerson = async function (req, res) {
     //#swagger.tags = ['People']
     const personId = new ObjectId(req.params.id)
     const isMember = req.body.isMember
-    const person = {}
+    let person = {}
 
     if (isMember) {
         person = {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            member: isMember,
+            isMember: isMember,
             ward: req.body.ward,
             stake: req.body.stake,
         }
@@ -66,7 +66,7 @@ const updatePerson = async function (req, res) {
         person = {
             firstname: req.body.firstname,
             lastname: req.body.lastname,
-            member: isMember,
+            isMember: isMember,
         }
     }
     const personResult = await mongo.getDatabase().db().collection('people').replaceOne({ _id: personId }, person)
