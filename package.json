@@ -8,5 +8,11 @@
   "keywords": [],
   "author": "Jarom Mariscal",
   "license": "ISC",
-  "description": "Second project for course CSE341 that I will use for registering attendance in the Youth Adults activities"
+  "description": "Second project for course CSE341 that I will use for registering attendance in the Youth Adults activities",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0"
+  }
 }
