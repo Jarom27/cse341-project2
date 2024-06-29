@@ -1,0 +1,12 @@
+{
+  "name": "cse341-project2",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Jarom Mariscal",
+  "license": "ISC",
+  "description": "Second project for course CSE341 that I will use for registering attendance in the Youth Adults activities"
+}
