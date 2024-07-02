@@ -7,7 +7,7 @@
   },
   "host": "jasobrmex.onrender.com",
   "basePath": "/",
-  "schemes": ["https,http"],
+  "schemes": ["https", "http"],
   "paths": {
     "/": {
       "get": {
