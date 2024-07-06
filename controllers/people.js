@@ -30,7 +30,7 @@ const getPerson = async function (req, res) {
         if (err instanceof MongoError) {
             res.status(500).json("An error happened in the Database")
         }
-        res.status(404).json({ errors: e.message })
+        res.status(422).json({ errors: err.message })
     }
 
 }
