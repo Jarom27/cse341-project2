@@ -1,8 +1,10 @@
 const router = require('express').Router()
 const peopleController = require('../controllers/people')
+const { body } = require('express-validator')
+const { peopleValidationRules, updatePeopleValidationRules } = require('../utilities/validator')
 router.get('/', peopleController.getPeople)
 router.get('/:id', peopleController.getPerson)
-router.post('/', peopleController.addPerson)
-router.put("/:id", peopleController.updatePerson)
+router.post('/', peopleValidationRules(), peopleController.addPerson)
+router.put("/:id", updatePeopleValidationRules(), peopleController.updatePerson)
 router.delete("/:id", peopleController.deletePerson)
 module.exports = router
