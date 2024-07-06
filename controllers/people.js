@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator')
 const mongo = require('../database')
-const { ObjectId } = require('mongodb')
+const { ObjectId, MongoError } = require('mongodb')
 const getPeople = async function (req, res) {
     //#swagger.tags = ['People']
     try {
@@ -13,26 +13,24 @@ const getPeople = async function (req, res) {
     catch (err) {
         console.error(err.message)
     }
-
-
-
 }
 
 const getPerson = async function (req, res) {
     //#swagger.tags = ['People']
     try {
+        if (!ObjectId.isValid(req.params.id)) {
+            throw new Error("Invalid id, please give a correct id")
+        }
         const personId = new ObjectId(req.params.id)
         const peopleResult = await mongo.getDatabase().db().collection('people').find({ _id: personId })
-
-        // peopleResult.toArray().then((people) => {
-        //     res.setHeader("Content-Type", "application/json")
-        //     res.status(200).json(people)
-        // })
         const data = await peopleResult.toArray()
         res.setHeader("Content-Type", "application/json")
         res.status(200).json(data)
     } catch (err) {
-        res.status(404).json({ errors: "Person not found" })
+        if (err instanceof MongoError) {
+            res.status(500).json("An error happened in the Database")
+        }
+        res.status(404).json({ errors: e.message })
     }
 
 }
