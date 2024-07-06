@@ -58,6 +58,7 @@ const updateActivity = async function (req, res) {
         if (!ObjectId.isValid(req.params.id)) {
             throw Error("Invalid id, please give a correct Id")
         }
+        validationResult(req).throw()
         const activityId = new ObjectId(req.params.id)
         const activity = {
             title: req.body.title,
