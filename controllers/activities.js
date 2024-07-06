@@ -12,7 +12,7 @@ const getActivities = async function (req, res) {
 const getActivity = async function (req, res) {
     //#swagger.tags = ['Activities']
     try {
-        if (!ObjectId.isValid()) {
+        if (!ObjectId.isValid(req.params.id)) {
             throw Error("Invalid Id, please give a correct id")
         }
         const activityId = new ObjectId(req.params.id)
