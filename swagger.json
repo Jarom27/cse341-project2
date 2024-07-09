@@ -5,7 +5,7 @@
     "description": "This project is for the project 2, and also for using in the Obregon Mexico stake",
     "version": "1.0.0"
   },
-  "host": "jasobrmex.onrender.com",
+  "host": "localhost:3001",
   "basePath": "/",
   "schemes": ["https", "http"],
   "paths": {
